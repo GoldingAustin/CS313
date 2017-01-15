@@ -1,0 +1,22 @@
+html {
+    background: rgb(41, 138, 161);
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+
+.wrapper {
+    background: rgba(242, 242, 242, 0.56);
+}
+
+.sec {
+    display: none;
+}
+
+
+.changeColor {
+    transition: background .5s;
+}
+.changeColor:hover {
+    background: rgb(183, 38, 51);
+}

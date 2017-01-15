@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script>$.get("header.html", function (data) {
+        $("#header").replaceWith(data);
+    });</script>
+</head>
+
+<body>
+<div id="header"></div>
+<h1>Welcome</h1>
+<div class="container-fluid">
+    <div class="col-sm-4 show"><img src="images/austin.jpg" class="img-responsive pic"/><img class="sec img-responsive" src="images/mukilteoGif.gif"/>
+        <div class="panel panel-default">
+            <div class="panel-body">My name is Austin Golding. I was born in <a class="showPic">Mukilteo, Washington</a>. I am a Software Engineering major.
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 show"><img src="images/wedding.jpg" class="img-responsive pic"/><img class="sec img-responsive" src="images/a&e.jpg"/>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a class="showPic">My wife, Emily, and I</a> were married in
+                the Richland, Washington temple in August of 2015.
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 show"><img src="images/starwars.jpg" class="img-responsive pic"/><img class="sec img-responsive" src="images/fourStarWars.jpg"/>
+        <div class="panel panel-default">
+            <div class="panel-body">I am a big fan of Star Wars and have been since I was <a class="showPic">four years old</a>.
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
