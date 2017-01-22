@@ -1,6 +1,6 @@
 <?php
 session_start();
-    if (isset($_SESSION['entered'])) {
+    if (isset($_SESSION['res'])) {
     header("Location: results.php");
     exit();
     }
@@ -150,9 +150,7 @@ session_start();
 <script>
     var form = document.querySelector("form");
     form = form.getElementsByClassName("form-group");
-
     $(function() {
-
         $("#swForm").on('submit', function (e) {
             var valid = true;
             if($('input[name=likeMovie]:checked').length<=0)

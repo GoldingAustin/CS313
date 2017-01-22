@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['res'] = "true";
 $json = file_get_contents('results.json');
 $jsonTemp = json_decode($json, true);
 $jsonTemp['results']['0'][$_POST['likeMovie']] += 1;
@@ -18,7 +20,7 @@ if (json_decode($json) != null)
 else
 {
 }
-$_SESSION['entered'] = "true";
+
 
 header("Location: results.php");
 exit();
