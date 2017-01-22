@@ -1,0 +1,43 @@
+{
+  "results": {
+    "0": {
+      "Episode I \u2013 The Phantom Menace": 2,
+      "Episode II \u2013 Attack of the Clones": 0,
+      "Episode III \u2013 Revenge of the Sith": 2,
+      "Episode IV \u2013 A New Hope": 1,
+      "Episode V \u2013 The Empire Strikes Back": 5,
+      "Episode VI \u2013 Return of the Jedi": 1,
+      "Episode VII \u2013 The Force Awakens": 3,
+      "Rogue One: A Star Wars Story": 0
+    },
+    "1": {
+      "Episode I \u2013 The Phantom Menace": 2,
+      "Episode II \u2013 Attack of the Clones": 7,
+      "Episode III \u2013 Revenge of the Sith": 0,
+      "Episode IV \u2013 A New Hope": 1,
+      "Episode V \u2013 The Empire Strikes Back": 0,
+      "Episode VI \u2013 Return of the Jedi": 0,
+      "Episode VII \u2013 The Force Awakens": 3,
+      "Rogue One: A Star Wars Story": 1
+    },
+    "2": {
+      "Boba Fett": 0,
+      "Han Solo": 2,
+      "Darth Vader": 2,
+      "Obi-Wan Kenobi": 5,
+      "Yoda": 5,
+      "Lando Calrissian": 0
+    },
+    "3": {
+      "The Prequel Trilogy Era": 3,
+      "Original Trilogy Era": 7,
+      "Sequal Trilogy Era": 4,
+      "The Old Republic Era": 0
+    },
+    "4": {
+      "Yes": 6,
+      "No": 8
+    },
+    "total": 22
+  }
+}
