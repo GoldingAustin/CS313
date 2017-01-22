@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['entered'] = "true";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         var bars = ["progress-bar-active", "progress-bar-red", "progress-bar-green", "progress-bar-yellow", "progress-bar-purple", "progress-bar-orange", "progress-bar-teal", "progress-bar-pink"];
-        var titles = ["Liked Star Wars Movie", "Disliked Star Wars Movie", "Wanted Star Wars Character Movies", "Favorite Star Wars Era", "Do You Like Sand?"];
+        var titles = ["Liked Star Wars Movie", "Disliked Star Wars Movie", "Wanted Star Wars Character Movies", "Favorite Star Wars Era", "Do You Hate Sand?"];
         $.getJSON("results.json", function (data) {
             var total = data['results']['total'];
             for (var i = 0; i < 6; i++) {

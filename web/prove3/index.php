@@ -142,7 +142,7 @@ session_start();
         </div>
 
         <button type="submit" class="btn btn-success">Submit</button>
-        <button type="button" class="btn btn-default pull-right" onclick="location.href='results.html';">See Results</button>
+        <button type="button" class="btn btn-default pull-right" onclick="location.href='results.php';">See Results</button>
     </form>
 
 </div>

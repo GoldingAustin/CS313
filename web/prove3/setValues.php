@@ -18,7 +18,7 @@ if (json_decode($json) != null)
 else
 {
 }
-$_SESSION['entered'] = "true";
+
 
 header("Location: results.php");
 exit();
