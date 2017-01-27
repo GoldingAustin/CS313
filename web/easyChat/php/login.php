@@ -40,7 +40,7 @@ if (isset($_SESSION['login_user'])) {
                 <label for="name">Username:</label>
                 <input id="name" name="name" type="text" class="form-control"/>
                 <label for="pass">Password:</label>
-                <input id="pass" name="pass" type="password" class="form-control"/>
+                <input id="password" name="pass" type="password" class="form-control"/>
             </div>
             <button id="sub" type="submit" class="btn btn-default">Submit</button>
             <button class="pull-right btn btn-default" type="button"><a href="create.php">Create Account</a></button>
@@ -51,13 +51,17 @@ if (isset($_SESSION['login_user'])) {
 <script>
     $("#login").validate({
         submitHandler: function (form) {
+            form.preventDefault();
             $.ajax({
                 url: 'checkLogin.php',
                 type: 'POST',
-                data: form.serialize(),
+                data: {
+                    name: $('#name').val(),
+                    pass: $('#password').val()
+                },
                 success: function (data) {
                     if (data == "false") {
-                        location.href="index.php";
+                        location.href = "index.php";
                     }
                     else {
                         console.log(data);
