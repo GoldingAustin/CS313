@@ -3,6 +3,7 @@ session_start();
 include("database.php");
 $myusername = pg_escape_string($conn, $_POST['name']);
 $mypassword = pg_escape_string($conn, $_POST['pass']);
+$mypassword =
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
 $row = pg_fetch_array($result, PGSQL_ASSOC);
