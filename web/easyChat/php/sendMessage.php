@@ -12,7 +12,7 @@ $active = $row['active'];
 $count = mysqli_num_rows($result);
 
 if ($count == 1) {
-    $sql = "INSERT INTO easychat.messages (message_id, room_id, create_time, message, user_id, username_mess) VALUES (NULL, '$roomID', CURRENT_TIMESTAMP, '$message', '$_SESSION[user_id]', '$user')";
+    $sql = "INSERT INTO easychat.messages (room_id, create_time, message, user_id, username_mess) VALUES ('$roomID', CURRENT_TIMESTAMP, '$message', '$_SESSION[user_id]', '$user')";
     $result = pg_query($conn, $sql);
     echo "$_SESSION[user_id]";
     return true;

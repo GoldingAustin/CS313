@@ -22,7 +22,7 @@ if ($count == 1) {
     echo "true";
     return true;
 } else {
-    $sql = "INSERT INTO easychat.user (username, password, create_time, user_id) VALUES ('$myusername', '$pass', CURRENT_TIMESTAMP, NULL)";
+    $sql = "INSERT INTO easychat.user (username, password, create_time) VALUES ('$myusername', '$pass', CURRENT_TIMESTAMP)";
     $result = pg_query($conn, $sql);
     $_SESSION['login_user'] = $myusername;
     echo "false";
