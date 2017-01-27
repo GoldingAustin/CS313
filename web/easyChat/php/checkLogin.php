@@ -10,10 +10,10 @@ $row = pg_fetch_array($result, PGSQL_ASSOC);
 $active = $row['active'];
 
 $count = pg_num_rows($result);
-
+$pass = pg_escape_string($conn, $row['password']);
 
 if ($count == 1) {
-    if (password_verify($mypassword, $row['password'])) {
+    if (password_verify($mypassword, $pass)) {
         if (isset($_SESSION)) {
             $_SESSION['login_user'] = $myusername;
             $_SESSION['user_id'] = $row['user_id'];
