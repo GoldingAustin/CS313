@@ -19,7 +19,7 @@ if ($count == 1) {
         }
         echo "false";
     } else {
-        echo $myusername;
+        echo $mypassword;
     }
 } else {
     echo "Username or Password Incorrect";

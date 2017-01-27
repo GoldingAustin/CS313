@@ -54,8 +54,7 @@ if (isset($_SESSION['login_user'])) {
             $.ajax({
                 url: 'checkLogin.php',
                 type: 'POST',
-                data: {'name': $('#name').val(),
-                'pass': $('#pass').val()},
+                data: form.serialize(),
                 success: function (data) {
                     if (data == "false") {
                         location.href="index.php";
