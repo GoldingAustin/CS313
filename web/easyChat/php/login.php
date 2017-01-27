@@ -35,7 +35,7 @@ if (isset($_SESSION['login_user'])) {
 </nav>
 <div class="container-fluid">
     <div class="wrapper">
-        <form id="login" action="" method="post">
+        <form id="login" action="checkLogin.php" method="post">
             <div class="form-group">
                 <label for="name">Username:</label>
                 <input id="name" name="name" type="text" class="form-control"/>
@@ -51,22 +51,7 @@ if (isset($_SESSION['login_user'])) {
 <script>
     $("#login").validate({
         submitHandler: function (form) {
-            $.ajax({
-                url: 'checkLogin.php',
-                type: 'post',
-                data: {'name': $('#name').val(),
-                'pass': $('#pass').val()},
-                success: function (data) {
-                    if (data == "false") {
-                        location.href="index.php";
-                    }
-                    else {
-                        alert(data);
-                        return false;
-                    }
-
-                }
-            });
+            $("#login").submit();
         },
         rules: {
             pass: "required"

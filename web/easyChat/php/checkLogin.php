@@ -16,12 +16,15 @@ if ($count == 1) {
         if (isset($_SESSION)) {
             $_SESSION['login_user'] = $myusername;
             $_SESSION['user_id'] = $row['user_id'];
+            header ("location: index.php");
         }
         echo "false";
     } else {
         echo $pass;
+        header ("location: login.php");
     }
 } else {
     echo "Username or Password Incorrect";
+    header ("location: login.php");
 }
 ?>
