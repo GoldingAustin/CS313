@@ -39,8 +39,9 @@ if (isset($_SESSION['login_user'])) {
             <div class="form-group">
                 <label for="name">Username:</label>
                 <input id="name" name="name" type="text" class="form-control"/>
-                <label for="pass">Password:</label>
-                <input id="password" name="pass" type="password" class="form-control"/>
+
+                <label for="password">Password:</label><input id="password" name="pass" type="password"
+                                                              class="form-control"/>
             </div>
             <button id="sub" type="submit" class="btn btn-default">Submit</button>
             <button class="pull-right btn btn-default" type="button"><a href="create.php">Create Account</a></button>
@@ -61,10 +62,10 @@ if (isset($_SESSION['login_user'])) {
                 },
                 success: function (data) {
                     if (data == "false") {
+                        alert("sure");
                         location.href = "index.php";
                     }
                     else {
-                        console.log(data);
                         alert(data);
                         return false;
                     }
