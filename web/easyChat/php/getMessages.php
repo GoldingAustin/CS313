@@ -4,7 +4,7 @@ $roomName = pg_escape_string($conn, $_POST['name']);
 $roomID = $_GET['roomID'];
 $sql = "SELECT * FROM easychat.messages WHERE room_id = '$roomID'";
 $result = pg_query($conn, $sql);
-while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+while ($row = pg_fetch_assoc($result)) {
     echo '<div class="chat-msg">
     <p id = "message-Content" >' . $row['message'] . '</p >
     <div class="chat-msg-author" >

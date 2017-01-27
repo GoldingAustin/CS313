@@ -7,7 +7,7 @@ $pass = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
 $pass = pg_escape_string($conn, $pass);
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
-$row = pg_fetch_array($result, PGSQL_ASSOC);
+$row = pg_fetch_assoc($result);
 $active = $row['active'];
 
 $count = pg_num_rows($result);

@@ -56,7 +56,7 @@ if (!isset($_SESSION['login_user'])) {
             $result = pg_query($conn, $sql);
 
             //        $count = mysqli_num_rows($result);
-            while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+            while ($row = pg_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td> <a href="chat.php?roomName=' . $row['room_name'] . '&roomID=' . $row['room_id'] .'">' . $row['room_name'] . '</a></td>';
                 echo '</tr>';

@@ -6,7 +6,7 @@ $roomID = pg_escape_string($conn, $_POST['roomID']);
 $user = $_SESSION['login_user'];
 $sql = "SELECT * FROM easychat.user WHERE username = '$user'";
 $result = pg_query($conn, $sql);
-$row = pg_fetch_array($result, PGSQL_ASSOC);
+$row = pg_fetch_assoc($result);
 $active = $row['active'];
 
 $count = pg_num_rows($result);

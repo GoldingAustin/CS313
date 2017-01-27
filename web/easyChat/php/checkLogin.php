@@ -10,7 +10,6 @@ $row = pg_fetch_assoc($result);
 $active = $row['active'];
 
 $count = pg_num_rows($result);
-//$row["password"]);
 if ($count >= 1) {
     if (password_verify($mypassword, $row["password"])) {
         if (isset($_SESSION)) {

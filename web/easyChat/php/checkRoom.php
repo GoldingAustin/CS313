@@ -4,7 +4,7 @@ include("database.php");
 $roomName = pg_escape_string($conn, $_POST['name']);
 $sql = "SELECT * FROM easychat.rooms WHERE room_name = '$roomName'";
 $result = pg_query($conn, $sql);
-$row = pg_fetch_array($result, PGSQL_ASSOC);
+$row = pg_fetch_assoc($result);
 $active = $row['active'];
 
 $count = pg_num_rows($result);
