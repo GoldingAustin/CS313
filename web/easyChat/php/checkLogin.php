@@ -2,7 +2,7 @@
 session_start();
 include("database.php");
 $myusername = pg_escape_string($conn, $_POST['name']);
-$mypassword = pg_escape_string($conn, $_POST['pass']);
+$mypassword = pg_escape_string($conn, $_POST['pass1']);
 
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
@@ -18,10 +18,13 @@ if ($count == 1) {
             $_SESSION['user_id'] = $row['user_id'];
         }
         echo "false";
+        return true;
     } else {
-        echo $mypassword;
+        echo "true";
+        return true;
     }
 } else {
-    echo "Username or Password Incorrect";
+    echo "true";
+    return true;
 }
 ?>

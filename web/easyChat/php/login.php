@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (isset($_SESSION['login_user'])) {
-    header("location: index.php");
-    exit();
-}
+//if (isset($_SESSION['login_user'])) {
+//    header("location: index.php");
+//    exit();
+//}
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ if (isset($_SESSION['login_user'])) {
     <!-- Latest compiled and minified CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../style.css">
-    <!-- jQu012ery library-->
+    <!-- jQuery library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
@@ -37,14 +37,17 @@ if (isset($_SESSION['login_user'])) {
     <div class="wrapper">
         <form id="login" action="" method="post">
             <div class="form-group">
-                <label for="name">Username:</label>
-                <input id="name" name="name" type="text" class="form-control"/>
-
-                <label for="password">Password:</label><input id="password" name="pass" type="password"
-                                                              class="form-control"/>
+                <p>
+                    <label for="name">Username:</label>
+                    <input id="name" name="name" type="text" class="form-control" required/>
+                </p>
+                <p>
+                    <label for="pass1">Password:</label>
+                    <input id="pass1" name="pass1" type="password" class="form-control" required/>
+                </p>
             </div>
             <button id="sub" type="submit" class="btn btn-default">Submit</button>
-            <button class="pull-right btn btn-default" type="button"><a href="create.php">Create Account</a></button>
+            <button class="pull-right btn btn-default" type="button" onclick="location.href='create.php';">Create Account</button>
         </form>
     </div>
 </div>
@@ -52,29 +55,27 @@ if (isset($_SESSION['login_user'])) {
 <script>
     $("#login").validate({
         submitHandler: function (form) {
-            form.preventDefault();
             $.ajax({
                 url: 'checkLogin.php',
-                type: 'POST',
+                type: 'post',
                 data: {
                     name: $('#name').val(),
-                    pass: $('#password').val()
+                    pass1: $('#pass1').val()
                 },
                 success: function (data) {
-                    if (data == "false") {
-                        alert("sure");
-                        location.href = "index.php";
+                    if (data == "true") {
+                        alert("Username exists");
+                        return false;
                     }
                     else {
-                        alert(data);
-                        return false;
+                        location.href = "index.php";
                     }
 
                 }
             });
         },
         rules: {
-            pass: "required"
+            pass1: "required"
         }
     });
 </script>
