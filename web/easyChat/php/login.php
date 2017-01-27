@@ -64,7 +64,7 @@ session_start();
                 },
                 success: function (data) {
                     if (data == "true") {
-                        alert("Username exists");
+                        alert(data);
                         return false;
                     }
                     else {

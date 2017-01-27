@@ -18,13 +18,13 @@ if ($count == 1) {
             $_SESSION['user_id'] = $row['user_id'];
         }
         echo "false";
-        return true;
+        return false;
     } else {
         echo $_POST['pass1'];
-        return true;
+        return false;
     }
 } else {
     echo "true";
-    return true;
+    return false;
 }
 ?>
