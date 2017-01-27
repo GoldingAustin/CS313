@@ -2,12 +2,9 @@
 session_start();
 
 include("database.php");
-//if(!$conn){  echo "Error : Unable to open database\n"; }
-//return $conn;
 $myusername = pg_escape_string($conn, $_POST['name']);
 $pass = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
 $pass = pg_escape_string($conn, $pass);
-//$mypassword = pg_escape_string($conn, $pass);
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
 $row = pg_fetch_array($result, PGSQL_ASSOC);

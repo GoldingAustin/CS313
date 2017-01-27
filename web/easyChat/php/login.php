@@ -57,12 +57,12 @@ if (isset($_SESSION['login_user'])) {
                 data: {name: $('#name').val(),
                 pass: $('#pass').val()},
                 success: function (data) {
-                    if (data == "true") {
-                        alert("Username exists");
-                        return false;
+                    if (data == "false") {
+                        location.href="index.php";
                     }
                     else {
-                        location.href="index.php";
+                        alert(data);
+                        return false;
                     }
 
                 }

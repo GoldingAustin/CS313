@@ -7,7 +7,7 @@ $result = pg_query($conn, $sql);
 $row = pg_fetch_array($result, PGSQL_ASSOC);
 $active = $row['active'];
 
-$count = mysqli_num_rows($result);
+$count = pg_num_rows($result);
 $uid = pg_escape_string($conn, $_SESSION['user_id']);
 
 if ($count != 1) {
