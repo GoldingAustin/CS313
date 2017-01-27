@@ -8,7 +8,7 @@ $myusername = pg_escape_string($conn, $_POST['name']);
 $pass = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
 //$pass = $_POST['pass1'];
 //$mypassword = pg_escape_string($conn, $pass);
-$sql = "SELECT * FROM `user` WHERE username = '$myusername'";
+$sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
 $row = pg_fetch_array($result, PGSQL_ASSOC);
 $active = $row['active'];
@@ -22,7 +22,7 @@ if ($count == 1) {
     echo "true";
     return true;
 } else {
-    $sql = "INSERT INTO `user` (`username`, `password`, `create_time`, `user_id`) VALUES ('$myusername', '$pass', CURRENT_TIMESTAMP, NULL)";
+    $sql = "INSERT INTO easychat.user (username, password, create_time, user_id) VALUES ('$myusername', '$pass', CURRENT_TIMESTAMP, NULL)";
     $result = pg_query($conn, $sql);
     $_SESSION['login_user'] = $myusername;
     echo "false";

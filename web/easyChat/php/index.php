@@ -52,7 +52,7 @@ if (!isset($_SESSION['login_user'])) {
             <tbody>
             <?php
             include("database.php");
-            $sql = 'SELECT * FROM `rooms`';
+            $sql = 'SELECT * FROM easychat.rooms';
             $result = pg_query($conn, $sql);
 
             //        $count = mysqli_num_rows($result);
