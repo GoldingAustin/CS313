@@ -61,7 +61,8 @@ if (isset($_SESSION['login_user'])) {
                         location.href="index.php";
                     }
                     else {
-                        alert(data);
+                        console.log(data);
+                        //alert(data);
                         return false;
                     }
 
