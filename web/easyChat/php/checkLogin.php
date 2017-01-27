@@ -6,13 +6,13 @@ $mypassword = pg_escape_string($conn, $_POST['pass1']);
 $mypassword = stripslashes($mypassword);
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
-$row = pg_fetch_array($result, PGSQL_ASSOC);
+$row = pg_fetch_assoc($result);
 $active = $row['active'];
 
 $count = pg_num_rows($result);
 //$row["password"]);
-if ($count == 1) {
-    if (password_verify($mypassword, $pass)) {
+if ($count >= 1) {
+    if (password_verify($mypassword, $row["password"])) {
         if (isset($_SESSION)) {
             $_SESSION['login_user'] = $myusername;
             $_SESSION['user_id'] = $row["user_id"];
@@ -24,7 +24,7 @@ if ($count == 1) {
         return false;
     }
 } else {
-    echo "true";
+    echo $mypassword;
     return false;
 }
 ?>
