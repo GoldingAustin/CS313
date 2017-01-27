@@ -54,8 +54,8 @@ if (isset($_SESSION['login_user'])) {
             $.ajax({
                 url: 'checkLogin.php',
                 type: 'post',
-                data: {name: $('#name').val(),
-                pass: $('#pass').val()},
+                data: {'name': $('#name').val(),
+                'pass': $('#pass').val()},
                 success: function (data) {
                     if (data == "false") {
                         location.href="index.php";
