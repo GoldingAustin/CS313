@@ -10,8 +10,7 @@ $result = pg_get_notify($conn);
 
 if (!$result) {
 
-}
-else {
+} else {
     echo 'chat()';
 }
 
@@ -91,14 +90,13 @@ else {
 
 
     function chat() {
-        console.log('yes');
-        var feedback = $.ajax({
+        $.ajax({
             type: "POST",
             url: "getMessages.php",
-            async: false
-        }).complete(function () {
-            $('#chatBox').append(feedback);
-        }
+            success: function (data) {
+                $('#chatBox').append(data);
+            }
+        });
     }
 
     $.urlParam = function (name) {
