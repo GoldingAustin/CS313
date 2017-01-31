@@ -4,6 +4,16 @@ session_start();
 if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
 }
+include("database.php");
+pg_query($conn, 'LISTEN newMessage');
+$result = pg_get_notify($conn);
+
+if (!$result) {
+
+}
+else {
+    echo 'chat()';
+}
 
 ?>
 
@@ -79,24 +89,17 @@ if (!isset($_SESSION['login_user'])) {
         }
     });
 
-//    $(window).on('load', function() {
-//        chat();
-//        function chat() {
-//            console.log('yes');
-//            var feedback = $.ajax({
-//                type: "POST",
-//                url: "getMessages.php",
-//                async: false
-//            }).complete(function () {
-//
-//                setTimeout(function () {
-//                    chat();
-//                }, 5000);
-//            }).responseText;
-//
-//            $('#chatBox').append(feedback);
-//        }
-//    });
+
+    function chat() {
+        console.log('yes');
+        var feedback = $.ajax({
+            type: "POST",
+            url: "getMessages.php",
+            async: false
+        }).complete(function () {
+            $('#chatBox').append(feedback);
+        }
+    }
 
     $.urlParam = function (name) {
         var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
