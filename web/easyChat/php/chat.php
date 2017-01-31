@@ -5,16 +5,7 @@ if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
 }
 include("database.php");
-pg_query($conn, 'LISTEN newMessage;');
-while(!$end) {
-    $result = pg_get_notify($conn);
 
-    if (!$result) {
-        usleep(100000);
-    } else {
-        echo 'chat();';
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -71,8 +62,15 @@ while(!$end) {
 </body>
 <script>
 
-    $(window).on("load", function() {
-        chat();
+    $(window).on("load", function () {
+        $.ajax({
+            type: "POST",
+            url: "getMessages.php",
+            success: function (data) {
+                $('#chatBox').append(data);
+            }
+        });
+        setTimeout(chat, 3000);
     });
     $("#chat").validate({
         submitHandler: function (form) {
@@ -97,12 +95,18 @@ while(!$end) {
     function chat() {
         $.ajax({
             type: "POST",
-            url: "getMessages.php",
+            url: "checkNewMessages.php",
             success: function (data) {
-                $('#chatBox').append(data);
+                if (data == "no") {
+
+                } else {
+                    $('#chatBox').append(data);
+                }
             }
         });
+        setTimeout(chat, 3000);
     }
+
 
     $.urlParam = function (name) {
         var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
