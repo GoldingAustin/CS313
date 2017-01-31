@@ -5,15 +5,16 @@ if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
 }
 include("database.php");
-pg_query($conn, 'LISTEN newMessage');
-$result = pg_get_notify($conn);
+pg_query($conn, 'LISTEN newMessage;');
+while(!$end) {
+    $result = pg_get_notify($conn);
 
-if (!$result) {
-
-} else {
-    echo 'chat()';
+    if (!$result) {
+        usleep(100000);
+    } else {
+        echo 'chat();';
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +70,10 @@ if (!$result) {
 </div>
 </body>
 <script>
+
+    $(window).on("load", function() {
+        chat();
+    });
     $("#chat").validate({
         submitHandler: function (form) {
             $.ajax({
