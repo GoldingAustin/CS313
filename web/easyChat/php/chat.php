@@ -30,7 +30,7 @@ $_SESSION['num_messages'] = 0;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
         <ul class="nav navbar-nav">
