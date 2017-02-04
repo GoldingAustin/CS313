@@ -5,3 +5,7 @@
   background: rgb(238, 238, 238);
   border-radius: 5px;
 }
+
+.chat-msg {
+  border-bottom: 1px solid black;
+}

@@ -1,16 +1,34 @@
 <?php
 include("database.php");
-$roomName = pg_escape_string($conn, $_POST['name']);
-$roomID = $_GET['roomID'];
+$roomID = $_POST['roomID'];
+
+$sql1 = "SELECT * FROM easychat.rooms WHERE room_id = '$roomID'";
+$roomNum = pg_query($conn, $sql1);
+$row1 = pg_fetch_assoc($roomNum);
+$numMessages = $row1['num_messages'];
+
 $sql = "SELECT * FROM easychat.messages WHERE room_id = '$roomID'";
 $result = pg_query($conn, $sql);
-while ($row = pg_fetch_assoc($result)) {
-    echo '<div class="chat-msg">
-    <p id = "message-Content" >' . $row['message'] . '</p >
+
+
+if ($_SESSION['num_messages'] < $numMessages) {
+//    while () {
+        for ($i = $_SESSION['num_messages'], $k = 0, $row = pg_fetch_assoc($result); $i < $numMessages; $i++, $k++) {
+            if ($row['message'] != "" && $k > $_SESSION['num_messages']) {
+                echo '<div class="chat-msg">
     <div class="chat-msg-author" >
-    <strong id="messageSender">' . $row['username'] . '</strong >
-    <span class="date" >' . $row['create_time'] . '</span >
+    <strong id="messageSender" style="color: ' . $row['user_color'] . '">' . $row['username_mess'] . '</strong >
+    <span class="date pull-right" >' . $row['create_time'] . '</span >
     </div >
+    <p id = "message-Content" >' . $row['message'] . '</p >
     </div >';
+            }
+        }
+   // }
+    $_SESSION['num_messages'] = $numMessages;
+} else {
+
 }
+
+
 ?>

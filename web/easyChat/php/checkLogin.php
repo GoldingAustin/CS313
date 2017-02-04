@@ -7,23 +7,23 @@ $mypassword = stripslashes($mypassword);
 $sql = "SELECT * FROM easychat.user WHERE username = '$myusername'";
 $result = pg_query($conn, $sql);
 $row = pg_fetch_assoc($result);
-$active = $row['active'];
 
 $count = pg_num_rows($result);
 if ($count >= 1) {
     if (password_verify($mypassword, $row["password"])) {
         if (isset($_SESSION)) {
+            $_SESSION['user_color'] = $row['user_color'];
             $_SESSION['login_user'] = $myusername;
             $_SESSION['user_id'] = $row["user_id"];
         }
-        echo "false";
+        echo "true";
         return false;
     } else {
-        echo $_POST['pass1'];
+        echo "Incorrect Password";
         return false;
     }
 } else {
-    echo $mypassword;
+    echo "Incorrect Username/Password";
     return false;
 }
 ?>

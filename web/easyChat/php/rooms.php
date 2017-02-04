@@ -3,6 +3,14 @@ session_start();
 if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
     exit();
+} else {
+    if(!isset($_SESSION['user_id'])) {
+        include("database.php");
+        $sql = "SELECT * FROM easychat.user WHERE username = '$_SESSION[login_user]'";
+        $result = pg_query($conn, $sql);
+        $row = pg_fetch_assoc($result);
+        $_SESSION['user_id'] = $row["user_id"];
+    }
 }
 
 ?>
@@ -27,7 +35,7 @@ if (!isset($_SESSION['login_user'])) {
     <div class="container-fluid">
         <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
         <ul class="nav navbar-nav">
-            <li class="changeColor"><a href="/">Rooms</a></li>
+            <li class="changeColor"><a href="rooms.php">Rooms</a></li>
             <li class="changeColor pull-right"><a href="logout.php">Logout</a></li>
         </ul>
     </div>

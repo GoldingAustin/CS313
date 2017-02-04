@@ -16,6 +16,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
+    <script src="../color-scheme.min.js"></script>
     <!-- Latest compiled JavaScript-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -25,7 +26,7 @@ session_start();
         <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
         <ul class="nav navbar-nav">
             <li class="changeColor"><a href="/">Home</a></li>
-            <li class="changeColor"><a href="/">Create Room</a></li>
+            <li class="changeColor"><a href="rooms.php">Rooms</a></li>
         </ul>
     </div>
 </nav>
@@ -52,6 +53,14 @@ session_start();
 </div>
 </body>
 <script>
+    var json;
+    $(window).on('load', function() {
+        $.getJSON("colors.json", function(data) {
+            var num = Math.floor(Math.random() * 16);
+            json = data[num];
+        });
+    });
+
     $("#create").validate({
         submitHandler: function (form) {
             $.ajax({
@@ -59,7 +68,8 @@ session_start();
                 type: 'post',
                 data: {
                     name: $('#name').val(),
-                    pass1: $('#pass1').val()
+                    pass1: $('#pass1').val(),
+                    color: json
                 },
                 success: function (data) {
                     if (data == "true") {
@@ -67,7 +77,8 @@ session_start();
                         return false;
                     }
                     else {
-                        location.href = "index.php";
+                        console.log(data);
+                        location.href = "rooms.php";
                     }
 
                 }

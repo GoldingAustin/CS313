@@ -1,10 +1,10 @@
 <?php
 session_start();
-
-//if (isset($_SESSION['login_user'])) {
-//    header("location: index.php");
-//    exit();
-//}
+include("database.php");
+if (isset($_SESSION['login_user'])) {
+    header("location: rooms.php");
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ session_start();
         <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
         <ul class="nav navbar-nav">
             <li class="changeColor"><a href="/">Home</a></li>
-            <li class="changeColor"><a href="/">Create Room</a></li>
+            <li class="changeColor"><a href="rooms.php">Create Room</a></li>
         </ul>
     </div>
 </nav>
@@ -53,6 +53,9 @@ session_start();
 </div>
 </body>
 <script>
+
+
+
     $("#login").validate({
         submitHandler: function (form) {
             $.ajax({
@@ -64,11 +67,12 @@ session_start();
                 },
                 success: function (data) {
                     if (data == "true") {
-                        alert(data);
-                        return false;
+                        location.href = "rooms.php";
+
                     }
                     else {
-                        location.href = "index.php";
+                        alert(data);
+                        return false;
                     }
 
                 }
