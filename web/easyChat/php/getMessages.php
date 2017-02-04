@@ -12,19 +12,20 @@ $result = pg_query($conn, $sql);
 
 
 if ($_SESSION['num_messages'] < $numMessages) {
-//    while () {
-        for ($i = $_SESSION['num_messages'], $k = 0, $row = pg_fetch_assoc($result); $i < $numMessages; $i++, $k++) {
-            if ($row['message'] != "" && $k > $_SESSION['num_messages']) {
-                echo '<div class="chat-msg">
+
+    $i = 0;
+    while ($row = pg_fetch_assoc($result)) {
+        if ($row['message'] != "" && $i > $_SESSION['num_messages']) {
+            echo '<div class="chat-msg">
     <div class="chat-msg-author" >
     <strong id="messageSender" style="color: ' . $row['user_color'] . '">' . $row['username_mess'] . '</strong >
     <span class="date pull-right" >' . $row['create_time'] . '</span >
     </div >
     <p id = "message-Content" >' . $row['message'] . '</p >
     </div >';
-            }
         }
-   // }
+        $i++;
+    }
     $_SESSION['num_messages'] = $numMessages;
 } else {
 

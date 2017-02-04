@@ -65,6 +65,7 @@ $_SESSION['num_messages'] = 0;
                             <p id = "message-Content" >' . $row['message'] . '</p >
                         </div >';
                         }
+                        $_SESSION['num_messages'] = pg_num_rows($result);
                         ?>
                     </div>
                 </div>
