@@ -24,12 +24,12 @@ if (isset($_SESSION['login_user'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
-        <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
+        <a href="#" class="navbar-brand text-color">Easy Chat</a>
         <ul class="nav navbar-nav">
-            <li class="changeColor"><a href="/">Home</a></li>
-            <li class="changeColor"><a href="rooms.php">Create Room</a></li>
+            <li class="nav-item text-color"><a class="text-color" href="/">Home</a></li>
+            <li class="nav-item text-color"><a class="text-color" href="rooms.php">Rooms</a></li>
         </ul>
     </div>
 </nav>

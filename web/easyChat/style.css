@@ -9,3 +9,22 @@
 .chat-msg {
   border-bottom: 1px solid black;
 }
+
+.text-color {
+  color: white;
+}
+.navbar {
+  border-radius: 0;
+}
+
+.valid {
+  border-color: inherit;
+}
+
+.error {
+  border-color: red;
+}
+
+#sendMess {
+  background: #45d887;
+}

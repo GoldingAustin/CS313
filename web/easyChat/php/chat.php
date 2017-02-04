@@ -30,15 +30,15 @@ $_SESSION['num_messages'] = 0;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-light bg-primary">
     <div class="container-fluid">
-        <div class="navbar-header"><a href="" class="navbar-brand">Easy Chat</a></div>
+        <a href="#" class="navbar-brand text-color">Easy Chat</a>
         <ul class="nav navbar-nav">
-            <li class="changeColor"><a href="/">Home</a></li>
-            <li class="changeColor"><a href="rooms.php">Rooms</a></li>
-            <li class="changeColor"><a href="logout.php">Logout</a></li>
-            <p class="navbar-text navbar-right">Signed in as <?php echo $_SESSION['login_user'] ?></p>
+            <li class="nav-item text-color"><a class="text-color" href="/">Home</a></li>
+            <li class="nav-item text-color"><a class="text-color" href="rooms.php">Rooms</a></li>
+            <li class="nav-item text-color"><a class="text-color" href="logout.php">Logout</a></li>
         </ul>
+        <p class="navbar-text pull-right">Signed in as <?php echo $_SESSION['login_user'] ?></p>
     </div>
 </nav>
 <div class="container-fluid">
@@ -73,8 +73,8 @@ $_SESSION['num_messages'] = 0;
             <div class="panel-footer">
 
                 <div class="input-group">
-                    <input type="text" id="inputMessage" class="form-control input-sm"/>
-                    <span class="input-group-btn"><input type="submit" class="btn btn-sm"/></span>
+                    <input type="text" id="inputMessage" name="inputField" class="form-control input-sm"/>
+                    <span class="input-group-btn"><input type="submit" class="btn btn-sm" id="sendMess"/></span>
                 </div>
         </form>
     </div>
@@ -85,9 +85,16 @@ $_SESSION['num_messages'] = 0;
 
     $(window).on("load", function () {
         chat();
-        //setTimeout(chat, 3000);
     });
     $("#chat").validate({
+        rules: {
+            inputField: {
+                required: true
+            }
+        },
+        errorPlacement: function(){
+            return false;  // suppresses error message text
+        },
         submitHandler: function (form) {
             $.ajax({
                 url: 'sendMessage.php',
@@ -118,7 +125,7 @@ $_SESSION['num_messages'] = 0;
                 }
             }
         });
-        setTimeout(chat, 6000);
+        setTimeout(chat, 2000);
     }
 
     $.urlParam = function (name) {
