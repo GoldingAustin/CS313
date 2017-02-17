@@ -4,8 +4,11 @@ if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
     exit();
 } else {
+    include("database.php");
+    $myusername = $_SESSION['login_user'];
+    $sql = "UPDATE easychat.user SET room_id=NULL WHERE username= '$myusername'";
+    $result = pg_query($conn, $sql);
     if(!isset($_SESSION['user_id'])) {
-        include("database.php");
         $sql = "SELECT * FROM easychat.user WHERE username = '$_SESSION[login_user]'";
         $result = pg_query($conn, $sql);
         $row = pg_fetch_assoc($result);
@@ -56,7 +59,8 @@ if (!isset($_SESSION['login_user'])) {
         <table class="table">
             <thead>
             <tr>
-                <th>Rooms</th>
+                <th>Room</th>
+                <th>Number of Users</th>
             </tr>
             </thead>
             <tbody>
@@ -66,8 +70,12 @@ if (!isset($_SESSION['login_user'])) {
             $result = pg_query($conn, $sql);
 
             while ($row = pg_fetch_assoc($result)) {
+                $sql = "SELECT count(*) AS exact_num FROM easychat.user WHERE room_id='$row[room_id]'";
+                $count = pg_query($conn, $sql);
+                $count = pg_fetch_result($count, 0);
                 echo '<tr>';
                 echo '<td> <a href="chat.php?roomName=' . $row['room_name'] . '&roomID=' . $row['room_id'] .'">' . $row['room_name'] . '</a></td>';
+                echo '<td> ' . $count . ' </td>';
                 echo '</tr>';
             }
             ?>

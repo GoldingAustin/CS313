@@ -4,11 +4,11 @@ session_start();
 if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
 }
-//include('database.php');
-//$roomID = $_GET['roomID'];
-//$sql = "SELECT * FROM easychat.messages WHERE room_id = '$roomID'";
-//$result = pg_query($conn, $sql);
-//$row = pg_fetch_assoc($result);
+include('database.php');
+$roomID = $_GET['roomID'];
+$user = $_SESSION['login_user'];
+$sql = "UPDATE easychat.user SET room_id='$roomID' WHERE username= '$user' ";
+$result = pg_query($conn, $sql);
 $_SESSION['num_messages'] = 0;
 
 ?>
@@ -82,7 +82,6 @@ $_SESSION['num_messages'] = 0;
 </div>
 </body>
 <script>
-
     $(window).on("load", function () {
         chat();
     });
@@ -93,7 +92,7 @@ $_SESSION['num_messages'] = 0;
             }
         },
         errorPlacement: function(){
-            return false;  // suppresses error message text
+            return false;
         },
         submitHandler: function (form) {
             $.ajax({
@@ -102,10 +101,11 @@ $_SESSION['num_messages'] = 0;
                 data: {mess: $('#inputMessage').val(), roomID: $.urlParam('roomID')},
                 success: function (data) {
                     if (data == "") {
+                        $('#inputMessage').val("");
                         return false;
                     }
                     else {
-                        console.log(data);
+                        $('#inputMessage').val("");
                         return false;
                     }
                 }
