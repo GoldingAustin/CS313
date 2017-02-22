@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CS313.iml" filepath="$PROJECT_DIR$/CS313.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaServlet/javaServlet.iml" filepath="$PROJECT_DIR$/javaServlet/javaServlet.iml" />
     </modules>
   </component>
 </project>
