@@ -1,4 +1,4 @@
-package helloWorld;
+package main.java.helloWorld;
 
 import java.io.IOException;
 
